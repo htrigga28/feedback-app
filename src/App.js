@@ -20,7 +20,7 @@ function App() {
           <Route exact path='/' element={
             <>
             <FeedbackForm />
-            <FeedbackStats />
+            <FeedbackStats />            
             <FeedbackList />
             </>
 
