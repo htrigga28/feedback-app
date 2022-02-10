@@ -1,6 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import {v4 as uuidv4 } from 'uuid' 
-
 const FeedbackContext = createContext()
  
 export const FeedbackProvider = ({children}) => {
@@ -19,7 +17,7 @@ export const FeedbackProvider = ({children}) => {
   , [])
 
   const fetchFeedback = async () => {
-    const response = await fetch(`/feedback?_sort=id&_order=asc`)
+    const response = await fetch(`https://my-json-server.typicode.com/htrigga28/feedback-app/feedback?_sort=id&_order=asc`)
 
     const data = await response.json()
 
@@ -28,7 +26,7 @@ export const FeedbackProvider = ({children}) => {
   }
 
   const addFeedback = async (newFeedback) => {
-    const response = await fetch('/feedback', {
+    const response = await fetch('https://my-json-server.typicode.com/htrigga28/feedback-app/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', 
@@ -45,7 +43,7 @@ export const FeedbackProvider = ({children}) => {
     })    
   }
   const updateFeedback =  async (id, updItem) => {
-    const response = await fetch(`/feedback/${id}`, {
+    const response = await fetch(`https://my-json-server.typicode.com/htrigga28/feedback-app/feedback/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +59,7 @@ export const FeedbackProvider = ({children}) => {
 
   const deleteFeedback = async (id) => {
     if(window.confirm('are you sure you want to delete?')) {
-      await fetch(`/feedback/${id}`, {method: 'DELETE' })
+      await fetch(`https://my-json-server.typicode.com/htrigga28/feedback-app/feedback/${id}`, {method: 'DELETE' })
       setFeedback(feedback.filter((item) => item.id !== id ))
     }
 
